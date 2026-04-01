@@ -29,3 +29,14 @@ project(':citizenusecase').projectDir = file('./domain/citizen/usecase')
 include 'citizenadapter'
 project(':citizenadapter').projectDir = file('./infrastructure/drivenadapter/citizendb')
 
+//emergency database
+include ':emergencymodel'
+project(':emergencymodel').projectDir = file('./domain/emergency/model')
+include ':emergencyusecase'
+project(':emergencyusecase').projectDir = file('./domain/emergency/usecase')
+include 'emergencyadapter'
+project(':emergencyadapter').projectDir = file('./infrastructure/drivenadapter/emergencydb')
+
+//http entry point
+include ':httpentrypoint'
+project(':httpentrypoint').projectDir = file('./infrastructure/entrypoint/http')

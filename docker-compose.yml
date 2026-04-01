@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  citizensdb:
+    image: postgres:16
+    container_name: citizensdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: citizensdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-init/citizens:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
+  emergenciasdb:
+    image: postgres:16
+    container_name: emergenciasdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: emergenciasdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db-init/emergencias:/docker-entrypoint-initdb.d
+    restart: unless-stopped
