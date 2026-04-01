@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/application" />
+            <option value="$PROJECT_DIR$/domain/citizen/model" />
+            <option value="$PROJECT_DIR$/domain/citizen/usecase" />
+            <option value="$PROJECT_DIR$/domain/emergency/model" />
+            <option value="$PROJECT_DIR$/domain/emergency/usecase" />
+            <option value="$PROJECT_DIR$/domain/rabbitmq/model" />
+            <option value="$PROJECT_DIR$/domain/rabbitmq/usecase" />
+            <option value="$PROJECT_DIR$/infrastructure/drivenadapter/citizendb" />
+            <option value="$PROJECT_DIR$/infrastructure/drivenadapter/emergencydb" />
+            <option value="$PROJECT_DIR$/infrastructure/drivenadapter/rabbitmq" />
+            <option value="$PROJECT_DIR$/infrastructure/entrypoint/http" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

@@ -1,30 +1,30 @@
 package gov.co.handler;
 
 
+import gov.co.CitizenUsecase;
+import gov.co.Emergency;
+import gov.co.EmergencyUsecase;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import gov.co.citizen.Citizen;
-import gov.co.emergency.Emergency;
-import gov.co.citizen.usecase.CitizenUseCase;
-import gov.co.emergency.usecase.EmergencyUsecase;
+
+
 import reactor.core.publisher.Mono;
-import reactor.core.publisher.Flux;
 
 @Component
-public class HttpHandler {
-    private final CitizenUseCase citizenUseCase;
+public class RestHandler {
+    private final CitizenUsecase citizenUsecase;
     private final EmergencyUsecase emergencyUseCase;
 
-    public HttpHandler(CitizenUseCase citizenUseCase, EmergencyUsecase emergencyUseCase){
-        this.citizenUseCase = citizenUseCase;
+    public RestHandler(CitizenUsecase citizenUsecase, EmergencyUsecase emergencyUseCase){
+        this.citizenUsecase = citizenUsecase;
         this.emergencyUseCase = emergencyUseCase;
     }
 
     public Mono<ServerResponse> createEmergency(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Emergency.class)
-                .flatMap(emergency -> emergencyUseCase.save(emergency))
+                .flatMap(emergencyUseCase::save)
                 .flatMap(savedEmergency -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(savedEmergency))
@@ -34,7 +34,7 @@ public class HttpHandler {
  
     public Mono<ServerResponse> getAllCitizens(ServerRequest serverRequest){
 
-            return citizenUseCase.findAll().collectList()
+            return citizenUsecase.findAll().collectList()
                     .flatMap(citizen -> ServerResponse.ok()
                             .contentType(MediaType.APPLICATION_JSON)
                             .bodyValue(citizen))
@@ -43,7 +43,7 @@ public class HttpHandler {
     }
 
     public Mono<ServerResponse> getAllEmergencies(ServerRequest serverRequest){
-            return emergencyUseCase.findAll().collectList()
+            return emergencyUseCase.getAllEmergencies().collectList()
                     .flatMap(emergency -> ServerResponse.ok()
                             .contentType(MediaType.APPLICATION_JSON)
                             .bodyValue(emergency))

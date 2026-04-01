@@ -12,6 +12,11 @@ this project allows to connect two databases at same time, you could connect mor
 
 
 
-by Lenin Ospina Lamprea
-University Of Medellin
-Antioquia - Colombia
+by Lenin Ospina Lamprea \
+University Of Medellin \
+Antioquia - Colombia 
+
+
+
+
+PENDIENTES: crear el router rest, testear peticiones a ambas db

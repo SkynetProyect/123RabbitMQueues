@@ -9,6 +9,7 @@ dependencies {
 
 	implementation project(':citizenmodel')
 	implementation project(':citizenusecase')
+
 	implementation project(':emergencymodel')
 	implementation project(':emergencyusecase')
 

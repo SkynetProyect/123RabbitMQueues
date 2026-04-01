@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="21" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="gov.co.appservice" options="-parameters" />
+      <module name="gov.co.appservice.aot" options="-parameters" />
+      <module name="gov.co.appservice.aotTest" options="-parameters" />
+      <module name="gov.co.appservice.main" options="-parameters" />
+      <module name="gov.co.appservice.test" options="-parameters" />
+    </option>
+  </component>
+</project>
