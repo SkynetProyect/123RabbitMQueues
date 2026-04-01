@@ -1,0 +1,31 @@
+
+pluginManagement {
+    repositories {
+        mavenLocal()
+        //maven { url '...' }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'gov.co'
+
+//main project
+include ':appservice'
+project(':appservice').projectDir = file('./application')
+
+//rabbit mq project
+include ':rabbitmqmodel'
+project(':rabbitmqmodel').projectDir = file('./domain/rabbitmq/model')
+include ':rabbitmqusecase'
+project(':rabbitmqusecase').projectDir = file('./domain/rabbitmq/usecase')
+include 'rabbitmqadapter'
+project(':rabbitmqadapter').projectDir = file('./infrastructure/drivenadapter/rabbitmq')
+
+//citizens database
+include ':citizenmodel'
+project(':citizenmodel').projectDir = file('./domain/citizen/model')
+include ':citizenusecase'
+project(':citizenusecase').projectDir = file('./domain/citizen/usecase')
+include 'citizenadapter'
+project(':citizenadapter').projectDir = file('./infrastructure/drivenadapter/citizendb')
+
