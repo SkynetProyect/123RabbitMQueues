@@ -2,7 +2,7 @@ package gov.co.emergency;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("emergency")
+@Table("emergencias")
 public class EmergencyEntity{
     @Id
     private Long id;

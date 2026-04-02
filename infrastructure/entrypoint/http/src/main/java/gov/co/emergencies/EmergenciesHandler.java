@@ -1,4 +1,4 @@
-package gov.co.handler;
+package gov.co.emergencies;
 
 
 import gov.co.CitizenUsecase;
@@ -13,12 +13,10 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 @Component
-public class RestHandler {
-    private final CitizenUsecase citizenUsecase;
+public class EmergenciesHandler {
     private final EmergencyUsecase emergencyUseCase;
 
-    public RestHandler(CitizenUsecase citizenUsecase, EmergencyUsecase emergencyUseCase){
-        this.citizenUsecase = citizenUsecase;
+    public EmergenciesHandler( EmergencyUsecase emergencyUseCase){
         this.emergencyUseCase = emergencyUseCase;
     }
 
@@ -32,16 +30,6 @@ public class RestHandler {
                         e -> ServerResponse.status(501).bodyValue(e.getMessage()));
     }
  
-    public Mono<ServerResponse> getAllCitizens(ServerRequest serverRequest){
-
-            return citizenUsecase.findAll().collectList()
-                    .flatMap(citizen -> ServerResponse.ok()
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .bodyValue(citizen))
-            .onErrorResume(Exception.class,
-                    e -> ServerResponse.status(501).bodyValue(e.getMessage()));
-    }
-
     public Mono<ServerResponse> getAllEmergencies(ServerRequest serverRequest){
             return emergencyUseCase.getAllEmergencies().collectList()
                     .flatMap(emergency -> ServerResponse.ok()

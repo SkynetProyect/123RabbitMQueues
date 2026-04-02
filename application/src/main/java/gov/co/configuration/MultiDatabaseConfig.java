@@ -30,19 +30,17 @@ public class MultiDatabaseConfig {
     }
 
     @Bean
-    @Primary
     public ConnectionFactory db1ConnectionFactory() {
         return createConnectionFactory("citizensdb");
     }
-    @Bean
-    @Primary
+    @Bean(name = "CitizenTemplate")
     public R2dbcEntityTemplate r2dbcEntityTemplate() {
         return new R2dbcEntityTemplate(db1ConnectionFactory());
     }
     
     @Bean
     public ConnectionFactory db2ConnectionFactory() {
-        return createConnectionFactory("emergenciesdb");
+        return createConnectionFactory("emergenciasdb");
     }
 
     @Bean(name = "EmergenciesTemplate")
